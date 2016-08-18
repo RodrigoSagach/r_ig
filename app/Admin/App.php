@@ -17,7 +17,7 @@ class App
     {
         $this->_domain = sprintf("%s.%s", $prefix, $this->_domain);
 
-        Route::group(['domain' => $this->_domain, 'middleware' => 'auth', 'namespace' => 'Admin'], function () {
+        Route::group(['domain' => $this->_domain, 'middleware' => ['auth', 'check-admin'], 'namespace' => 'Admin'], function () {
             Route::get('/',                         'DashboardController@index');
             Route::get('investments/requests',      'InvestmentRequestController@index');
             Route::get('investments/requests/{id}', 'InvestmentRequestController@show');

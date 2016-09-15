@@ -18,7 +18,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div class="panel">
+                <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="col-sm-12">
                             <table class="table">

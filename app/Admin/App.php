@@ -18,16 +18,22 @@ class App
         $this->_domain = sprintf("%s.%s", $prefix, $this->_domain);
 
         Route::group(['domain' => $this->_domain, 'middleware' => ['auth', 'check-admin'], 'namespace' => 'Admin'], function () {
-            Route::get('/',                         'DashboardController@index');
-            Route::get('investments/requests',      'InvestmentRequestController@index');
-            Route::get('investments/requests/{id}', 'InvestmentRequestController@show');
-            Route::get('withdrawals/requests',      'WithdrawalRequestController@index');
-            Route::get('withdrawals/requests/{id}', 'WithdrawalRequestController@show');
-            Route::get('excerpts',                  'ExcerptController@index');
-            Route::get('users',                     'UserController@index');
+            Route::get('/',                                'DashboardController@index');
+            Route::get('investments/requests',             'InvestmentRequestController@index');
+            Route::get('investments/requests/{irequest}',  'InvestmentRequestController@show');
+            Route::get('withdrawals/requests',             'WithdrawalRequestController@index');
+            Route::get('withdrawals/requests/{wrequest}',  'WithdrawalRequestController@show');
+            Route::get('excerpts',                         'ExcerptController@index');
+            Route::get('users',                            'UserController@index');
+            Route::get('users/{user}',                     'UserController@edit');
 
-            Route::post('investments/new',           'InvestmentRequestController@store');
-            Route::post('investments/requests/{id}', 'InvestmentRequestController@postStatus');
+            Route::post('investments/new',                 'InvestmentRequestController@store');
+
+            Route::put('investments/requests/{irequest}',  'InvestmentRequestController@update');
+            Route::put('withdrawals/requests/{wrequest}',  'WithdrawalRequestController@update');
+            Route::put('users/{user}',                     'UserController@update');
+
+            Route::delete('users/{user}',                  'UserController@destroy');
         });
     }
 }

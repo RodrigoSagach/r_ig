@@ -30,6 +30,8 @@ elixir(function(mix) {
             './bower_components/bootstrap-material-design/dist/js/material.js',
             './bower_components/bootstrap-material-design/dist/js/ripples.js',
             './node_modules/Flot/jquery.flot.js',
-            './node_modules/Flot/jquery.flot.resize.js'
+            './node_modules/Flot/jquery.flot.resize.js',
+            './node_modules/Flot/jquery.flot.time.js',
+            './node_modules/Flot/jquery.flot.categories.js',
         ], 'public/js/vendor-user.js');
 });

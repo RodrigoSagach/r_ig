@@ -12,58 +12,50 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $users = \App\User::orderBy('id', 'asc');
-
-        if ($request->has('s')) {
-            $users->where('username', 'LIKE', '%' . $request->input('s') . '%')
-                ->orWhere('name', 'LIKE', '%' . $request->input('s') . '%')
-                ->orWhere('email', 'LIKE', '%' . $request->input('s') . '%');
-        }
+        $users = User::orderBy('created_at', 'desc');
 
         return view('admin.users.index')
             ->with('users', $users->paginate(25));
     }
 
-    public function showUserForm($id)
+    public function edit($user)
     {
-        return view('admin.updateuser')
-            ->with('usr', \App\User::find($id));
+        return view('admin.users.edit')->with('editUser', $user);
     }
 
-    public function user(Request $request, $id)
+    public function update(Request $request, $user)
     {
-        $user = \App\User::find($id);
-
-        // TODO: Validate!
         $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'confirmed',
-            'balance' => 'required|digits_between:3,15',
-            'e_funds' => 'required|digits_between:3,15',
-            'num_quotas' => 'required|integer',
+            'username'     => 'required|min:6',
+            'email'        => 'required|email',
+            'password'     => 'confirmed',
+            'account_type' => 'required|digits_between:0,1',
         ]);
 
-        $user->username    = $request->input('username');
-        $user->email       = $request->input('email');
-        $user->name        = $request->input('name');
-        $user->referred_by = $request->input('referred_by');
-        $user->active      = $request->has('active') ? true : false;
-        $user->confirmed   = $request->has('confirmed') ? true : false;
+        $user->username      = $request->input('username');
+        $user->email         = $request->input('email');
+        $user->name          = $request->input('name');
+        $user->last_name     = $request->input('last_name');
+        $user->account_type  = $request->input('account_type');
+        $user->account_value = $request->input('account_value');
+        $user->confirmed     = $request->has('confirmed') ? true : false;
 
         if ($request->input('password') != '')
         {
             $user->password = bcrypt($request->input('password'));
         }
 
-        if ($request->has('critical-change'))
-        {
-            $user->balance    = $request->input('balance') / 100;
-            $user->e_funds    = $request->input('e_funds') / 100;
-            $user->num_quotas = $request->input('num_quotas');
-        }
-
         $user->save();
 
-        return redirect()->route('admin::users');
+        $request->session()->flash('updated', true);
+
+        return back();
+    }
+
+    public function destroy($user)
+    {
+        $user->delete();
+
+        return response()->json(['success' => true]);
     }
 }

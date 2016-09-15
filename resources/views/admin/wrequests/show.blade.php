@@ -10,6 +10,8 @@
                     <form method="post" id="acceptform">
                         {!! csrf_field() !!}
 
+                        <input type="hidden" name="_method" value="put" />
+
                         <table class="table table-hover">
                             <tr>
                                 <th>Username:</th>

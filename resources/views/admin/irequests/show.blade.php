@@ -13,6 +13,8 @@
                             <form method="post">
                                 {!! csrf_field() !!}
 
+                                <input type="hidden" name="_method" value="put">
+
                                 <div class="form-group">
                                     <label>Message</label>
                                     <textarea class="form-control" name="response" placeholder="Optional: Leave a comment"></textarea>

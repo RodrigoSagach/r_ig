@@ -17,53 +17,35 @@ class WithdrawalRequestController extends Controller
             ->with('requests', $requests);
     }
 
-    public function show($id)
+    public function show($wrequest)
     {
-        $req = WithdrawalRequest::find($id);
-
-        if (!$req) abort(404);
-
         return view('admin.wrequests.show')
-            ->with('request', $req);
+            ->with('request', $wrequest);
     }
 
-    public function postStatus(Request $request, $id)
+    public function update(Request $request, $wrequest)
     {
         $this->validate($request, [
             'response' => 'present|string',
             'status' => 'required|integer'
         ]);
 
-        $wrequest = \App\WithdrawalRequest::find($id);
         $wrequest->response = $request->input('response');
         $wrequest->status   = $request->input('status');
 
         if ($request->input('status') == 1)
         {
-            $withdrawal = $wrequest->user->withdrawals()->create([
-                'description' => 'Requisição de Saque',
-                'account_info' => $wrequest->account_info,
+            $excerpt = $wrequest->user->excerpts()->create([
+                'type' => 'withdrawal',
+                'description' => sprintf('%s: %s', $wrequest->description, $wrequest->account_value),
                 'amount' => $wrequest->amount
             ]);
 
-            $wrequest->withdrawal_id = $withdrawal->id;
+            $wrequest->excerpt_id = $excerpt->id;
         }
 
         $wrequest->save();
 
-        return response()->json(['success' => true]);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        \App\WithdrawalRequest::destroy($id);
-
-        return redirect()->route('admin.finance.wrequests.index');
+        return response("<script>window.close();</script>");
     }
 }

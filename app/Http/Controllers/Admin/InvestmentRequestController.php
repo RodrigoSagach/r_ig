@@ -19,26 +19,19 @@ class InvestmentRequestController extends Controller
             ->with('requests', $requests);
     }
 
-    public function accept($id)
+    public function show($irequest)
     {
-        return view('admin.finances.qrequests.accept')
-            ->with('request', \App\QuotaRequest::find($id));
+        return view('admin.irequests.show')
+            ->with('request', $irequest);
     }
 
-    public function reject($id)
-    {
-        return view('admin.finances.qrequests.reject')
-            ->with('request', \App\QuotaRequest::find($id));
-    }
-
-    public function postStatus(Request $request, $id)
+    public function update(Request $request, $irequest)
     {
         $this->validate($request, [
             'response' => 'present|string',
             'status' => 'required|integer'
         ]);
 
-        $irequest = InvestmentRequest::find($id);
         $irequest->response = $request->input('response');
         $irequest->status   = $request->input('status');
 
@@ -54,15 +47,5 @@ class InvestmentRequestController extends Controller
         $irequest->save();
 
         return response("<script>window.close();</script>");
-    }
-
-    public function show($id)
-    {
-        $irequest = InvestmentRequest::find($id);
-
-        if (!$irequest) abort(404);
-
-        return view('admin.irequests.show')
-            ->with('request', $irequest);
     }
 }

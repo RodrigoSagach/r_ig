@@ -28,7 +28,7 @@
 <body class="animated-content infobar-overlay">
     <header id="topnav" class="navbar navbar-default navbar-fixed-top" role="banner">
         <div class="logo-area">
-            <a class="navbar-brand navbar-brand-primary" href="index.html">
+            <a class="navbar-brand navbar-brand-primary" href="{{ url('/') }}">
                 <img class="show-on-collapse img-logo-white" alt="Paper" src="assets/img/logo-icon-white.png">
                 <img class="show-on-collapse img-logo-dark" alt="Paper" src="assets/img/logo-icon-dark.png">
                 <img class="img-white" alt="Paper" src="assets/img/logo-white.png">

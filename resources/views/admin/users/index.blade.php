@@ -46,22 +46,24 @@
                                             <th>Username</th>
                                             <th>Name</th>
                                             <th>E-Mail</th>
+                                            <th>Balance (USD)</th>
                                             <th>Registered at</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     @foreach ($users as $current)
-                                        <tr data-user="{{ $current->toJson() }}" data-toggle="popover-data">
+                                        <tr>
                                             <td>{{ $current->id }}</td>
                                             <td>{{ $current->username }}</td>
                                             <td>{{ $current->name }}</td>
                                             <td>{{ $current->email }}</td>
+                                            <td>{{ format_money($current->balance) }}</td>
                                             <td>{{ $current->created_at }}</td>
                                             <td>
-                                                <a href="{{ url('/user', ['id' => $current->id]) }}">Editar</a>
+                                                <a href="{{ url('/users', ['id' => $current->id]) }}">Edit</a>
                                                 |
-                                                <a data-href="{{ url('/user', ['id' => $current->id]) }}" class="delete-confirmation">Apagar</a>
+                                                <a data-href="{{ url('/users', ['id' => $current->id]) }}" class="delete-confirmation">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -83,36 +85,20 @@
         </div>
     </div>
     <script type="text/javascript">
-        $('[data-toggle=popover-data]').popover({
-            container: 'body',
-            content: function () {
-                var data = $(this).data('user');
+        $('.delete-confirmation').on('click', function (e) {
+            e.preventDefault();
 
-                $ul = $('<ul/>').addClass('list-group');
+            $self = $(this);
 
-                $ul.append($('<li/>').addClass('list-group-item').html('<strong>Balance:</strong> ' + data.cpf));
-                $ul.append($('<li/>').addClass('list-group-item').html('<strong>Invested:</strong> $ ' + parseFloat(data.balance).toFixed(2)));
-                $ul.append($('<li/>').addClass('list-group-item').html('<strong>Earned:</strong> $ ' + parseFloat(data.e_funds).toFixed(2)));
-
-                return $ul;
-            },
-            html: true,
-            placement: 'top',
-        });
-
-        $('[data-toggle=popover-data]').hover(function () {
-            $(this).popover('show');
-        }, function () {
-            $(this).popover('hide');
-        });
-
-        $('.delete-confirmation').confirmation({
-            btnOkLabel: 'Apagar',
-            btnCancelClass: 'Cancelar',
-            singleton: true,
-            popout: true,
-            title: 'Você tem Certeza?',
-            placement: 'top'
+            if (window.confirm('Are you sure want delete this user ?'))
+            {
+                $.post($self.data('href'), {
+                    '_method': 'delete',
+                    '_token': '{{ csrf_token() }}',
+                }, function () {
+                    location.reload();
+                });
+            }
         });
     </script>
 @endsection

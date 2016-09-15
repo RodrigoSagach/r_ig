@@ -73,46 +73,52 @@
     <script type="text/javascript">
         var invs = [
         @foreach($investments as $inv)
-            [{{ $inv->created_at->getTimestamp() }}, {{ $inv->amount }}],
+            [{{ $inv->created_at->getTimestamp() * 1000 }}, {{ $inv->amount }}],
         @endforeach
         ];
 
         var earns = [
         @foreach($earnings as $earn)
-            [{{ $earn->created_at->getTimestamp() }}, {{ $earn->amount }}],
+            [{{ $earn->created_at->getTimestamp() * 1000 }}, {{ $earn->amount }}],
         @endforeach
         ];
 
-        var plot = $.plot($("#stats"),
-            [{ data: invs, label: "Investments" }, { data: earns, label: "Earnings" }],
+        var plot = $.plot($("#stats"), [
             {
-                series: {
-                    shadowSize: 0,
-                    lines: { 
-                        show: true,
-                        lineWidth: 2,
-                    },
-                    points: { show: true }
-                },
-                grid: {
-                    labelMargin: 10,
-                    hoverable: true,
-                    clickable: true,
-                    borderWidth: 1,
-                    borderColor: '#f5f5f5'
-                },
-                legend: {
-                    backgroundColor: '#fff'
-                },
-                yaxis: { min: -1.2, max: 1.2, tickColor: '#f5f5f5', font: {color: '#bdbdbd'}},
-                xaxis: { tickColor: '#f5f5f5', font: {color: '#bdbdbd'}},
-                colors: [Utility.getBrandColor('success'), Utility.getBrandColor('inverse')],
-                tooltip: true,
-                tooltipOpts: {
-                    content: "Date: %x, Amount (USD): %y"
-                }
+                data: invs,
+                label: "Investments"
+            },
+            {
+                data: earns,
+                label: "Earnings"
             }
-        );
+        ], {
+            series: {
+                shadowSize: 0,
+                lines: { 
+                    show: true,
+                    lineWidth: 2,
+                },
+                points: { show: true }
+            },
+            grid: {
+                labelMargin: 10,
+                hoverable: true,
+                clickable: true,
+                borderWidth: 1,
+                borderColor: '#f5f5f5'
+            },
+            legend: {
+                backgroundColor: '#fff'
+            },
+            yaxis: { tickColor: '#f5f5f5', font: {color: '#bdbdbd'}},
+            xaxis: { mode: "time", tickColor: '#f5f5f5', font: {color: '#bdbdbd'}},
+            colors: [Utility.getBrandColor('success'), Utility.getBrandColor('inverse')],
+            tooltip: true,
+            tooltipOpts: {
+                content: "x: %x, y: %y"
+            }
+        });
 
         var previousPoint = null;
         $("#stats").bind("plothover", function (event, pos, item) {

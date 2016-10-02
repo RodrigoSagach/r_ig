@@ -25,6 +25,19 @@
     @endif
         <div class="row">
             <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        Payment info, please send payment for one of following address.
+                        <ul>
+                            <li><strong>BitCoin:</strong>&nbsp;38Vjv5ZbpMnYrrHE8UcVoteN3nciBFA6DB</li>
+                            <li><strong>Neteller:</strong>&nbsp;financial@investgroup.soccer</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <div class="panel panel-default" id="investNow">
                     <div class="panel-body">
                         <div class="row">

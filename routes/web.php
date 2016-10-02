@@ -19,5 +19,5 @@ Auth::routes();
 \AdminApp::routes();
 \UserApp::routes();
 
-Route::get('/',                    'HomeController@home');
+Route::get('/',                    'HomeController@index');
 Route::get('pictures/{type}/{id}', 'PictureController@show');

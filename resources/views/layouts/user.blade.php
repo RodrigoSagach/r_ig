@@ -29,10 +29,10 @@
     <header id="topnav" class="navbar navbar-default navbar-fixed-top" role="banner">
         <div class="logo-area">
             <a class="navbar-brand navbar-brand-primary" href="index.html">
-                <img class="show-on-collapse img-logo-white" alt="Paper" src="assets/img/logo-icon-white.png">
-                <img class="show-on-collapse img-logo-dark" alt="Paper" src="assets/img/logo-icon-dark.png">
-                <img class="img-white" alt="Paper" src="assets/img/logo-white.png">
-                <img class="img-dark" alt="Paper" src="assets/img/logo-dark.png">
+                <img class="show-on-collapse img-logo-white" alt="Paper" src="{{ asset('images/logo-icon.png') }}">
+                <img class="show-on-collapse img-logo-dark" alt="Paper" src="{{ asset('images/logo-icon.png') }}">
+                <img class="img-white" alt="Paper" src="{{ asset('images/logo.png') }}">
+                <img class="img-dark" alt="Paper" src="{{ asset('images/logo.png') }}">
             </a>
             <span id="trigger-sidebar" class="toolbar-trigger toolbar-icon-bg stay-on-search">
                 <a data-toggle="tooltips" data-placement="right" title="Toggle Sidebar">

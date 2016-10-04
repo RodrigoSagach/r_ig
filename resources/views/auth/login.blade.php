@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container" id="login-form">
-        <a href="/" class="login-logo"><img src="{{ asset('images/logo-dark.png') }}"></a>
+        <a href="/" class="login-logo"><img src="{{ asset('images/logo.png') }}"></a>
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <div class="panel panel-default">

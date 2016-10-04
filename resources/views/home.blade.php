@@ -366,7 +366,11 @@ How do I start?
                               <img src="{{ asset('home/images/service-2.png') }}" alt="">
                               <div class="service-content-img-layer"></div>
                               <div class="service-content-img-layer-icon"><a href="#"><img src="{{ asset('home/images/zoom-icon.png') }}" alt=""></a></div>
-                              <div class="service-content-icon">') }}
+                              <div class="service-content-icon">
+                                 <div class="service-content-icon-details">
+                                    <span class="icon icon-ChartUp"></span>
+                                    <h2>Over/Under Goals</h2>
+                                    <p>Trading Sports</p>                            
                                  </div>
                               </div>
                            </div>

@@ -29,7 +29,7 @@
                 <div class="info-tile info-tile-alt tile-indigo">
                     <div class="info">
                         <div class="tile-heading"><span>Investment Total</span></div>
-                        <div class="tile-body"><span>{{ format_money($stats->get('total.investments')) }}</span></div>
+                        <div class="tile-body"><span>{{ format_money($stats->get('invested')) }}</span></div>
                     </div>
                     <div class="stats">
                         <div class="tile-content"><span class="icon" style="color: white;"><i class="material-icons">equalizer</i></span></div>

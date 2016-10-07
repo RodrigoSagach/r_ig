@@ -29,7 +29,7 @@
                     <div class="panel-body">
                         Payment info, please send payment for one of following address.
                         <ul>
-                            <li><strong>BitCoin:</strong>&nbsp;38Vjv5ZbpMnYrrHE8UcVoteN3nciBFA6DB</li>
+                            <li><strong>BitCoin:</strong>&nbsp;Coming soon</li>
                             <li><strong>Neteller:</strong>&nbsp;financial@investgroup.soccer</li>
                         </ul>
                     </div>

@@ -45,7 +45,7 @@ class InvestmentRequestController extends Controller
             'picture_path' => $user->username . '/' . $new_receipt->getBasename(),
         ]);
 
-        return redirect('/investments/new');
+        return redirect('user/investments/new');
     }
 
     public function show($id)

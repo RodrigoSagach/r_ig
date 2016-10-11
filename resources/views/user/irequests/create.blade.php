@@ -4,7 +4,7 @@
 
 @section('breadcrumb')
     <li>
-        <a href="/">Dashboard</a>
+        <a href="{{ user_url('') }}">Dashboard</a>
     </li>
     <li class="active">
         <a href="#">New Investment</a>
@@ -115,7 +115,7 @@
                                     <td>{{ $pending->id }}</td>
                                     <td>{{ format_money($pending->amount) }}</td>
                                     <td>
-                                        <a href="{{ url('/investments', ['id' => $pending->id]) }}" class="open-popover">View</a>
+                                        <a href="{{ user_url('investments', ['id' => $pending->id]) }}" class="open-popover">View</a>
                                     </td>
                                     <td>{{ $pending->created_at }}</td>
                                 </tr>

@@ -4,7 +4,7 @@
 
 @section('breadcrumb')
     <li>
-        <a href="{{ url('/') }}">Dashboard</a>
+        <a href="{{ admin_url('/') }}">Dashboard</a>
     </li>
     <li class="active">
         <a href="#">Pending Withdrawals</a>
@@ -47,7 +47,7 @@
                                         <td>{{ $request->created_at }}</td>
                                         <td>{{ $request->status == 0 ? 'Pending' : ($request->status == 1 ? 'Approved' : 'Rejected') }}</td>
                                         <td>
-                                            <a class="open-popover" href="{{ url('/withdrawals/requests', ['id' => $request->id]) }}">Open</a>
+                                            <a class="open-popover" href="{{ url('/admin/withdrawals/requests', ['id' => $request->id]) }}">Open</a>
                                         </td>
                                     </tr>
                                 @endforeach

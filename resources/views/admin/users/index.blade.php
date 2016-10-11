@@ -4,10 +4,10 @@
 
 @section('breadcrumb')
     <li>
-        <a href="/">Dashboard</a>
+        <a href="{{ admin_url('') }}">Dashboard</a>
     </li>
     <li class="active">
-        <a href="/">Users</a>
+        <a href="#">Users</a>
     </li>
 @endsection
 
@@ -61,9 +61,9 @@
                                             <td>{{ format_money($current->balance) }}</td>
                                             <td>{{ $current->created_at }}</td>
                                             <td>
-                                                <a href="{{ url('/users', ['id' => $current->id]) }}">Edit</a>
+                                                <a href="{{ url('admin/users', ['id' => $current->id]) }}">Edit</a>
                                                 |
-                                                <a data-href="{{ url('/users', ['id' => $current->id]) }}" class="delete-confirmation">Delete</a>
+                                                <a data-href="{{ url('admin/users', ['id' => $current->id]) }}" class="delete-confirmation">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach

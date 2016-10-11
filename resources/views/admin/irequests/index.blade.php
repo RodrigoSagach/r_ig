@@ -4,7 +4,7 @@
 
 @section('breadcrumb')
     <li>
-        <a href="/">Dashboard</a>
+        <a href="{{ admin_url('') }}">Dashboard</a>
     </li>
     <li class="active">
         <a href="#">Pending Investments</a>
@@ -43,7 +43,7 @@
                                         <td>{{ $request->created_at }}</td>
                                         <td>{{ $request->status == 0 ? 'Pending' : ($request->status == 1 ? 'Approved' : 'Rejected') }}</td>
                                         <td>
-                                            <a href="{{ url('investments/requests', ['id' => $request->id]) }}" data-toggle="request-popup">Open</a>
+                                            <a href="{{ url('admin/investments/requests', ['id' => $request->id]) }}" data-toggle="request-popup">Open</a>
                                         </td>
                                     </tr>
                                 @endforeach

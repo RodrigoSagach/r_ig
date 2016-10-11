@@ -54,6 +54,6 @@ class ProfileController extends Controller
 
         $request->session()->flash('success', true);
 
-        return redirect('/profile');
+        return redirect('user/profile');
     }
 }

@@ -178,12 +178,12 @@
                         <div class="appointment-area">
                         @if(Auth::check())
                            @if(Gate::allows('admin-dashboard'))
-                              <p><a href="{{ url('http://admin.' . config('app.domain')) }}">Admin</a></p>
+                              <p><a href="{{ admin_url('') }}">Admin</a></p>
                            @else
-                              <p><a href="{{ url('http://user.' . config('app.domain')) }}">Painel</a></p>
+                              <p><a href="{{ user_url('') }}">Painel</a></p>
                            @endif
                         @else
-                           <p><a href="{{ url('http://user.' . config('app.domain')) }}">Login</a></p>
+                           <p><a href="{{ url('/login') }}">Login</a></p>
                         @endif
                         </div>                     
                   </div>

@@ -24,3 +24,13 @@ function user()
 {
     Auth::user();
 }
+
+function admin_url($spec)
+{
+    return url('admin/' . $spec);
+}
+
+function user_url($spec)
+{
+    return url('user/' . $spec);
+}

@@ -4,7 +4,7 @@
 
 @section('breadcrumb')
     <li>
-        <a href="/">Dashboard</a>
+        <a href="{{ user_url('') }}">Dashboard</a>
     </li>
     <li class="active">
         <a href="#">Transaction History</a>

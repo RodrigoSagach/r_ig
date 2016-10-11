@@ -4,10 +4,10 @@
 
 @section('breadcrumb')
     <li>
-        <a href="/">Dashboard</a>
+        <a href="{{ user_url('') }}">Dashboard</a>
     </li>
     <li class="active">
-        <a href="/withdrawal/new">Withdrawal</a>
+        <a href="#">Withdrawal</a>
     </li>
 @endsection
 

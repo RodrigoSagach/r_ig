@@ -10,12 +10,14 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+Route::group(['middleware' => 'https'], function () {
+    Route::get('register/pending/{username}',     'Auth\RegisterController@pending');
+    Route::get('register/confirm/{code}',         'Auth\RegisterController@confirm');
+    Route::get('emails/{command}/{type}/{data?}', 'EMailController@command');
 
-Route::get('register/pending/{username}',     'Auth\RegisterController@pending');
-Route::get('register/confirm/{code}',         'Auth\RegisterController@confirm');
-Route::get('emails/{command}/{type}/{data?}', 'EMailController@command');
+    Auth::routes();
+});
 
-Auth::routes();
 \AdminApp::routes();
 \UserApp::routes();
 

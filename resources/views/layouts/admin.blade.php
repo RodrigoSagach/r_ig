@@ -28,7 +28,7 @@
 <body class="animated-content infobar-overlay">
     <header id="topnav" class="navbar navbar-default navbar-fixed-top" role="banner">
         <div class="logo-area">
-            <a class="navbar-brand navbar-brand-primary" href="{{ url('/') }}">
+            <a class="navbar-brand navbar-brand-primary" href="{{ admin_url('') }}">
                 <img class="show-on-collapse img-logo-white" alt="Paper" src="{{ asset('images/logo-icon.png') }}">
                 <img class="show-on-collapse img-logo-dark" alt="Paper" src="{{ asset('images/logo-icon.png') }}">
                 <img class="img-white" alt="Paper" src="{{ asset('images/logo.png') }}">
@@ -75,7 +75,7 @@
                                         <span>Navigation</span>
                                     </li>
                                     <li>
-                                        <a class="withripple" href="/">
+                                        <a class="withripple" href="{{ admin_url('') }}">
                                             <span class="icon"><i class="material-icons">home</i></span><span>Home</span>
                                         </a>
                                     </li>
@@ -84,17 +84,17 @@
                                             <span class="icon"><i class="material-icons">flash_on</i></span><span>Finance</span>
                                         </a>
                                         <ul class="acc-menu">
-                                            <li><a class="withripple" href="{{ url('/investments/requests') }}">Pending Invesmetns</a></li>
-                                            <li><a class="withripple" href="{{ url('/withdrawals/requests') }}">Pending Withdrawals</a></li>
+                                            <li><a class="withripple" href="{{ admin_url('investments/requests') }}">Pending Invesmetns</a></li>
+                                            <li><a class="withripple" href="{{ admin_url('withdrawals/requests') }}">Pending Withdrawals</a></li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a class="withripple" href="/excerpts">
+                                        <a class="withripple" href="{{ admin_url('excerpts') }}">
                                             <span class="icon"><i class="material-icons">list</i></span><span>Transaction History</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="withripple" href="/users">
+                                        <a class="withripple" href="{{ admin_url('users') }}">
                                             <span class="icon"><i class="material-icons">contacts</i></span><span>Users</span>
                                         </a>
                                     </li>
@@ -117,7 +117,7 @@
                     <div class="page-content">
                         <ol class="breadcrumb">                   
                             <li class="">
-                                <a href="/">Home</a>
+                                <a href="{{ admin_url('') }}">Home</a>
                             </li>
                         @yield('breadcrumb')
                         </ol>

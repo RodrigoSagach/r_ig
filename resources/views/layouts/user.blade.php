@@ -28,7 +28,7 @@
 <body class="animated-content infobar-overlay">
     <header id="topnav" class="navbar navbar-default navbar-fixed-top" role="banner">
         <div class="logo-area">
-            <a class="navbar-brand navbar-brand-primary" href="{{ url('/') }}">
+            <a class="navbar-brand navbar-brand-primary" href="{{ user_url('/') }}">
                 <img class="show-on-collapse img-logo-white" alt="Paper" src="{{ asset('images/logo-icon.png') }}">
                 <img class="show-on-collapse img-logo-dark" alt="Paper" src="{{ asset('images/logo-icon.png') }}">
                 <img class="img-white" alt="Paper" src="{{ asset('images/logo.png') }}">
@@ -75,30 +75,30 @@
                                         <span>Navigation</span>
                                     </li>
                                     <li>
-                                        <a class="withripple" href="/">
+                                        <a class="withripple" href="{{ user_url('') }}">
                                             <span class="icon"><i class="material-icons">home</i></span><span>Home</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a  class="withripple" href="/investments">
+                                        <a  class="withripple" href="{{ user_url('investments') }}">
                                             <span class="icon"><i class="material-icons">assignment</i></span><span>Investments</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a  class="withripple" href="/investments/new">
+                                        <a  class="withripple" href="{{ user_url('investments/new') }}">
                                             <span class="icon"><i class="material-icons">shop</i></span><span>Invest</span></a>
                                     </li>
                                     <li>
-                                        <a  class="withripple" href="/withdrawals/new">
+                                        <a  class="withripple" href="{{ user_url('withdrawals/new') }}">
                                             <span class="icon"><i class="material-icons">assignment_return</i></span><span>Withdrawal</span></a>
                                     </li>
                                     <li>
-                                        <a  class="withripple" href="/excerpts">
+                                        <a  class="withripple" href="{{ user_url('excerpts') }}">
                                             <span class="icon"><i class="material-icons">list</i></span><span>Transaction History</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a  class="withripple" href="/profile">
+                                        <a  class="withripple" href="{{ user_url('profile') }}">
                                             <span class="icon"><i class="material-icons">account_circle</i></span><span>Profile</span>
                                         </a>
                                     </li>
@@ -121,7 +121,7 @@
                     <div class="page-content">
                         <ol class="breadcrumb">                   
                             <li class="">
-                                <a href="/">Home</a>
+                                <a href="{{ user_url('') }}">Home</a>
                             </li>
                         @yield('breadcrumb')
                         </ol>

@@ -713,6 +713,11 @@ How do I start?
                         </form>
                      </div>
                   </div>
+                  <div class="col-sm-6 col-md-3">
+                     <div class="footer-main-single">
+                        <a href="http://www.google.com.br/safebrowsing/diagnostic?site=investgroup.soccer" target="_BLANK"><img src="{{ asset('images/google-safebrowsing.png') }}" alt="Google Safebrowsing"></a>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>

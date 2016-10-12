@@ -118,6 +118,6 @@ class RegisterController extends Controller
 
         $request->session()->flash('update_payment_data', true);
 
-        return redirect('/profile');
+        return redirect('/user/profile');
     }
 }

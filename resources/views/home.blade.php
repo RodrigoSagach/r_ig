@@ -183,7 +183,7 @@
                               <p><a href="{{ user_url('') }}">Painel</a></p>
                            @endif
                         @else
-                           <p><a href="{{ url('/login') }}">Login</a></p>
+                           <p><a href="{{ user_url('') }}">Login</a></p>
                         @endif
                         </div>                     
                   </div>

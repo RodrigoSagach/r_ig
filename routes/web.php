@@ -16,10 +16,11 @@ Route::group(['middleware' => 'https'], function () {
     Route::get('emails/{command}/{type}/{data?}', 'EMailController@command');
 
     Auth::routes();
+
+    Route::get('/', 'HomeController@index');
 });
 
 \AdminApp::routes();
 \UserApp::routes();
 
-Route::get('/',                    'HomeController@index');
 Route::get('pictures/{type}/{id}', 'PictureController@show');
